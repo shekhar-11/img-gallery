@@ -29,16 +29,16 @@ export const AuthProvider: FC<AuthProviderProps> = ({children}) =>{
     const [isLoading,setIsLoading]  = useState<boolean>(false)
 
 
-    useEffect(()=>
-    {
+    // useEffect(()=>
+    // {
 
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-                setUser(user),
-                setIsLoading(false)
+    //     const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //             setUser(user),
+    //             setIsLoading(false)
 
-        })
-            return unsubscribe
-    },[])
+    //     })
+    //         return unsubscribe
+    // },[])
 
     const value = {
         user,
