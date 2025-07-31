@@ -1,6 +1,18 @@
 
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/fbconfig";
+
+
 
 const Navbar = () => {
+  const handleLogout = async () => {
+    
+    await signOut(auth).then(()=>
+    console.log("User signed out successfully")
+  
+  ); 
+  }
+   
   return (
     // <div className="sm:w-3/5 ml-auto mr-auto flex ">
         
@@ -12,7 +24,7 @@ const Navbar = () => {
   </div>
  
   <div className="navbar-end">
-    <button className="btn btn-ghost">Button</button>
+    <button onClick={handleLogout} className="btn btn-ghost">LogOut</button>
   </div>
 </div>
     // </div>
