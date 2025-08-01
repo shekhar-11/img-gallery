@@ -29,7 +29,7 @@ function Gallery() {
   />
 </figure>
   <div className="card-body">
-   <p>Upload by: {image.userEmail} </p>
+   <p>Upload by: {image.userEmail.split('@')[0]} </p>
    <span>Created At: {image.createdAt.toLocaleDateString()}</span>
     
   </div>
