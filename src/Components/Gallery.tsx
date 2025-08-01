@@ -1,21 +1,40 @@
+import useFireStore from "../Hooks/useFireStore";
 
 
 function Gallery() {
-  return (
-    <div className="gap-4 grid md:grid-cols-3 justify-center ">
 
-<div className="card bg-base-100 w-96 shadow-sm">
-  <figure>
-    <img
-      src=""
-      alt="Shoes" />
-  </figure>
+  const {docs:images,isLoading} = useFireStore('images');
+  // console.log(docs.data());
+  if(isLoading)
+  {
+    return (
+      <div className="text-center mt-10">
+        <progress className="progress w-56"></progress>
+      </div>
+    )
+  }
+
+
+  return (
+    <div className="gap-4 grid md:grid-cols-3 justify-center mt-10 ">
+
+    {images.map((image)=>(
+      <div key={image.imageUrl} className="card card-compact bg-base-100 w-full shadow-xl">
+  
+ <figure className="aspect-[4/3] overflow-hidden">
+  <img
+    src={image.imageUrl}
+    alt="RJ"
+    className="w-full h-full object-cover"
+  />
+</figure>
   <div className="card-body">
-   <p>Upload by: </p>
-   <span>Created At:</span>
+   <p>Upload by: {image.userEmail} </p>
+   <span>Created At: {image.createdAt.toLocaleDateString()}</span>
     
   </div>
 </div>
+    ))}
 
     </div>
   )

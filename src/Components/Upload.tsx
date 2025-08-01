@@ -5,8 +5,8 @@ import useStorage from "../Hooks/useStorage";
 const Upload = () => {
 
   const [selectedFile,setSelectedFile] = useState<File|null>(null);
-  const {startUpload} = useStorage();
-
+  const {startUpload,progress} = useStorage();
+  
   const handleFileChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     e.preventDefault();
     if(e.target.files  && e.target.files[0]){
@@ -31,8 +31,13 @@ const Upload = () => {
         className="file-input file-input-ghost text-center" 
         onChange={handleFileChange}
         />
-
-        <button type='submit' className="btn gap-5">Upload <span>🪄</span></button>
+<button
+  type="submit"
+  disabled={!selectedFile || (progress > 0 && progress < 100)}
+  className={`btn gap-5 ${progress > 0 && progress < 100 ? 'loading' : ''}`}
+>
+  Upload <span>🪄</span>
+</button>
 
 
     </form>
