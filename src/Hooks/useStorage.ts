@@ -1,5 +1,5 @@
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { db, storage } from '../firebase/fbconfig';
 import { useAuth } from './useAuth';
 import { addDoc, collection } from 'firebase/firestore';

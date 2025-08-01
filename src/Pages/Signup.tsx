@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { auth } from "../firebase/fbconfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../firebase/fbconfig";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../Hooks/signInWithPop";
 import { useAuth } from "../Hooks/useAuth";
@@ -12,14 +12,14 @@ export const Signup = ()=>{
   try {
     await signInWithGoogle();
     navigate("/"); // ✅ Only after success
-  } catch (err: any) {
+  } catch (err) {
     console.error("Google sign-in failed:", err.message);
     setError(err.message);
   }
 };
 
-    const [email,setEmail] = useState<string>("");
-    const [password,setPassword] = useState<string>("");
+    // const [email,setEmail] = useState<string>("");
+    // const [password,setPassword] = useState<string>("");
     const [error,setError] = useState<string>("");
     const navigate = useNavigate();
     // console.log(email);
